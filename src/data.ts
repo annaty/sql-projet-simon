@@ -1,5 +1,6 @@
-import { Club, Stadium, Statistics, Sponsor, Player } from './types';
+import { Club, Stadium, Statistics, Sponsor, Player, Staff, StaffType, Competition, CompetitionType, CompetitionInstance, CompetitionClubs } from './types';
 import { clubs } from './data/Clubs';
+import { competitions } from './data/Competitions';
 import { faker } from '@faker-js/faker';
 
 const stadiums = require('./data/SoccerStadiums.json');
@@ -31,6 +32,62 @@ export const PLAYERS: Player[] = Array.from({ length: DEFAULT_TO_GENERATE }).map
         club_id: getRandomId(),
         sponsor_id: getRandomId(),
         statistics_id: getRandomId()
+    }
+});
+
+
+export const STAFF_TYPES: StaffType[] = Array.from({ length: DEFAULT_TO_GENERATE }).map(() => {
+    return {
+        type: faker.name.jobTitle()
+    }
+});
+
+export const STAFF: Staff[] = Array.from({ length: DEFAULT_TO_GENERATE }).map(() => {
+    return {
+        first_name: faker.name.firstName(),
+        last_name: faker.name.lastName(),
+        type: getRandomId(),
+        club_id: getRandomId(CLUBS.length),
+    }
+});
+
+export const COMPETITION_TYPES: CompetitionType[] = [
+    { name: 'League' },
+    { name: 'Cup' },
+    { name: 'Tournament' },
+    { name: 'Friendly' },
+    { name: 'Other'},
+    { name: 'Championship' },
+    { name: 'Playoffs' },
+    { name: 'Qualification' },
+    { name: 'Relegation' },
+    { name: 'Super Cup' },
+    { name: 'World Cup' },
+    { name: 'European Cup' },
+    { name: 'Champions League' },
+    { name: 'Europa League' },
+    { name: 'Regional' }
+]
+
+export const COMPETITIONS: Competition[] = competitions.map((competition: string) => {
+    return {
+        name: competition,
+        type: getRandomId(COMPETITION_TYPES.length)
+    }
+});
+
+export const COMPETITION_INSTANCES: CompetitionInstance[] = Array.from({ length: DEFAULT_TO_GENERATE }).map(() => {
+    return {
+        competition_id: getRandomId(competitions.length),
+        nb_club_participants: parseInt(faker.random.numeric(3)),
+        year: faker.date.past().getFullYear().toString()
+    }
+});
+
+export const COMPETITION_CLUBS: CompetitionClubs[] = Array.from({ length: DEFAULT_TO_GENERATE }).map(() => {
+    return {
+        club_id: getRandomId(CLUBS.length),
+        competition_id: getRandomId(competitions.length)
     }
 });
 
