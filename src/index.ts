@@ -39,6 +39,7 @@ function generateInsertLines(targetTable: keyof typeof dbStructure): string[] {
     let lines: string[] = []; //format: ["('xxx', 'xxx')", "('xxx', 'xxx')", ...]
     switch (targetTable) {
         case TABLES.stadium:
+            console.log(STADIUMS.length);
             for (let i = 0; i < STADIUMS.length; i++) {
                 lines.push(`
                 ("""${STADIUMS[i].name}""")
@@ -60,6 +61,7 @@ function generateInsertLines(targetTable: keyof typeof dbStructure): string[] {
             }
             break;
         case TABLES.sponsor:
+            console.log(SPONSORS.length);
             for (let i = 0; i < SPONSORS.length; i++) {
                 lines.push(`
                     ("${SPONSORS[i].name}")

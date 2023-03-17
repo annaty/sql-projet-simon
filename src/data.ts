@@ -5,7 +5,7 @@ import { faker } from '@faker-js/faker';
 
 const stadiums = require('./data/SoccerStadiums.json');
 
-export const DEFAULT_TO_GENERATE = 1000;
+export const DEFAULT_TO_GENERATE = 11000;
 
 export const STADIUMS: Stadium[] = Array.from(stadiums).map((stadium: any) => ({ name: stadium.Name }));
 
