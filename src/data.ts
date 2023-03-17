@@ -15,7 +15,7 @@ export const STATISTICS: Statistics[] = Array.from({ length: DEFAULT_TO_GENERATE
     return {
         lifetime_goals: parseInt(faker.random.numeric(4)),
         lifetime_matches: parseInt(faker.random.numeric(3)),
-        first_match: faker.date.past().toISOString()
+        first_match: faker.date.past().toJSON().slice(0, 10)
     } as Statistics;
 });
 
@@ -29,7 +29,7 @@ export const PLAYERS: Player[] = Array.from({ length: DEFAULT_TO_GENERATE }).map
     return {
         first_name: faker.name.firstName(),
         last_name: faker.name.lastName(),
-        club_id: getRandomId(),
+        club_id: getRandomId(CLUBS.length),
         sponsor_id: getRandomId(),
         statistics_id: getRandomId()
     }
@@ -87,11 +87,11 @@ export const COMPETITION_INSTANCES: CompetitionInstance[] = Array.from({ length:
 export const COMPETITION_CLUBS: CompetitionClubs[] = Array.from({ length: DEFAULT_TO_GENERATE }).map(() => {
     return {
         club_id: getRandomId(CLUBS.length),
-        competition_id: getRandomId(competitions.length)
+        competition_instance_id: getRandomId(competitions.length)
     }
 });
 
 
 function getRandomId(range = DEFAULT_TO_GENERATE): number {
-    return Math.floor(Math.random() * range);
+    return Math.floor(Math.random() * range) + 1;
 }

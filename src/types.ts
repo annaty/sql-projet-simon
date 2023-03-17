@@ -52,7 +52,7 @@ export interface CompetitionInstance {
 }
 
 export interface CompetitionClubs {
-    competition_id: number;
+    competition_instance_id: number;
     club_id: number;
 }
 
@@ -108,6 +108,6 @@ export const dbStructure: Structure = {
         columns: ['first_name', 'last_name', 'type', 'club_id'],
     },
     competition_clubs: {
-        columns: ['competition_id', 'club_id'],
+        columns: ['competition_instance_id', 'club_id'],
     }
 };

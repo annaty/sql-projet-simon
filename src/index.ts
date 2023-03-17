@@ -70,7 +70,7 @@ function generateInsertLines(targetTable: keyof typeof dbStructure): string[] {
         case TABLES.player:
             for (let i = 0; i < PLAYERS.length; i++) {
                 lines.push(`
-                    ("${PLAYERS[i].first_name}", "${PLAYERS[i].last_name}", "${PLAYERS[i].club_id}, ${PLAYERS[i].sponsor_id}", ${PLAYERS[i].statistics_id})
+                    ("${PLAYERS[i].first_name}", "${PLAYERS[i].last_name}", ${PLAYERS[i].club_id}, ${PLAYERS[i].sponsor_id}, ${PLAYERS[i].statistics_id})
                 `);
             }
             break;
@@ -100,7 +100,7 @@ function generateInsertLines(targetTable: keyof typeof dbStructure): string[] {
         case TABLES.competition:
             for (let i = 0; i < COMPETITIONS.length; i++) {
                 lines.push(`
-                    ("${COMPETITIONS[i].name}", ${COMPETITIONS[i].type}")
+                    ("${COMPETITIONS[i].name}", ${COMPETITIONS[i].type})
                 `);
             }
             break;
@@ -114,7 +114,7 @@ function generateInsertLines(targetTable: keyof typeof dbStructure): string[] {
         case TABLES.competition_clubs:
             for (let i = 0; i < COMPETITION_CLUBS.length; i++) {
                 lines.push(`
-                    (${COMPETITION_CLUBS[i].competition_id}, ${COMPETITION_CLUBS[i].club_id})
+                    (${COMPETITION_CLUBS[i].competition_instance_id}, ${COMPETITION_CLUBS[i].club_id})
                 `);
             }
             break;
