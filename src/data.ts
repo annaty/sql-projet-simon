@@ -15,7 +15,7 @@ export const STATISTICS: Statistics[] = Array.from({ length: DEFAULT_TO_GENERATE
     return {
         lifetime_goals: parseInt(faker.random.numeric(4)),
         lifetime_matches: parseInt(faker.random.numeric(3)),
-        first_match: faker.date.past().toJSON().slice(0, 10)
+        first_match: faker.date.past(100).toJSON().slice(0, 10)
     } as Statistics;
 });
 
