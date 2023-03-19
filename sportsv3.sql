@@ -30,6 +30,7 @@ CREATE TABLE `player` (
   `id` INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
   `first_name` varchar(50),
   `last_name` varchar(50),
+  `sex` enum('', 'male', 'female'),
   `club_id` int,
   `sponsor_id` int,
   `statistics_id` int
@@ -43,7 +44,8 @@ CREATE TABLE `competition_type` (
 CREATE TABLE `competition` (
   `id` INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
   `name` varchar(50),
-  `type` int
+  `type` int,
+  `importance` enum('low', 'medium', 'high')
 );
 
 CREATE TABLE `sponsor` (
@@ -77,4 +79,4 @@ ALTER TABLE `player` ADD CONSTRAINT fk6 FOREIGN KEY (`sponsor_id`) REFERENCES `s
 ALTER TABLE `competition` ADD CONSTRAINT fk7 FOREIGN KEY (`type`) REFERENCES `competition_type` (`id`);
 ALTER TABLE `competition_instance` ADD CONSTRAINT fk8 FOREIGN KEY (`competition_id`) REFERENCES `competition` (`id`);
 ALTER TABLE `competition_clubs` ADD CONSTRAINT fk9 FOREIGN KEY (`competition_instance_id`) REFERENCES `competition_instance` (`id`);
-ALTER TABLE `competition_clubs` ADD CONSTRAINT fk10 FOREIGN KEY (`id_club`) REFERENCES `club` (`id`);
+ALTER TABLE `competition_clubs` ADD CONSTRAINT fk10 FOREIGN KEY (`club_id`) REFERENCES `club` (`id`);

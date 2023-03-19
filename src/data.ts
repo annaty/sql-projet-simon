@@ -2,6 +2,7 @@ import { Club, Stadium, Statistics, Sponsor, Player, Staff, StaffType, Competiti
 import { clubs } from './data/Clubs';
 import { competitions } from './data/Competitions';
 import { faker } from '@faker-js/faker';
+import { Sex, Importance } from './types';
 
 const stadiums = require('./data/SoccerStadiums.json');
 
@@ -29,6 +30,7 @@ export const PLAYERS: Player[] = Array.from({ length: DEFAULT_TO_GENERATE }).map
     return {
         first_name: faker.name.firstName(),
         last_name: faker.name.lastName(),
+        sex: faker.helpers.arrayElement([Sex.male, Sex.female, Sex.null]),
         club_id: getRandomId(CLUBS.length),
         sponsor_id: getRandomId(),
         statistics_id: getRandomId()
@@ -72,7 +74,8 @@ export const COMPETITION_TYPES: CompetitionType[] = [
 export const COMPETITIONS: Competition[] = competitions.map((competition: string) => {
     return {
         name: competition,
-        type: getRandomId(COMPETITION_TYPES.length)
+        type: getRandomId(COMPETITION_TYPES.length),
+        importance: faker.helpers.arrayElement([Importance.low, Importance.medium, Importance.high]),
     }
 });
 

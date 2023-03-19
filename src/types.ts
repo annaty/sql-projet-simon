@@ -17,9 +17,16 @@ export interface Sponsor {
     name: string;
 }
 
+export enum Sex {
+    male = 'male',
+    female = 'female',
+    null = ''
+}
+
 export interface Player {
     first_name: string;
     last_name: string;
+    sex: Sex;
     club_id: number;
     sponsor_id: number;
     statistics_id: number;
@@ -36,9 +43,16 @@ export interface StaffType {
     type: string;
 }
 
+export enum Importance {
+    low = 'low',
+    medium = 'medium',
+    high = 'high'
+}
+
 export interface Competition {
     name: string;
     type: number;
+    importance: Importance;
 }
 
 export interface CompetitionType {
@@ -90,13 +104,13 @@ export const dbStructure: Structure = {
         columns: ['lifetime_goals', 'lifetime_matches', 'first_match'],
     },
     player: {
-        columns: ['first_name', 'last_name', 'club_id', 'sponsor_id', 'statistics_id'],
+        columns: ['first_name', 'last_name', 'sex', 'club_id', 'sponsor_id', 'statistics_id'],
     },
     competition_type: {
         columns: ['name'],
     },
     competition: {
-        columns: ['name', 'type'],
+        columns: ['name', 'type', 'importance'],
     },
     competition_instance: {
         columns: ['competition_id', 'nb_club_participants', 'year'],
