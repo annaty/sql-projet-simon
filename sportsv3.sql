@@ -76,5 +76,5 @@ ALTER TABLE `player` ADD CONSTRAINT fk5 FOREIGN KEY (`club_id`) REFERENCES `club
 ALTER TABLE `player` ADD CONSTRAINT fk6 FOREIGN KEY (`sponsor_id`) REFERENCES `sponsor` (`id`);
 ALTER TABLE `competition` ADD CONSTRAINT fk7 FOREIGN KEY (`type`) REFERENCES `competition_type` (`id`);
 ALTER TABLE `competition_instance` ADD CONSTRAINT fk8 FOREIGN KEY (`competition_id`) REFERENCES `competition` (`id`);
-ALTER TABLE `competition_clubs` ADD CONSTRAINT fk9 FOREIGN KEY (`id_competition_instance`) REFERENCES `competition_instance` (`id`);
+ALTER TABLE `competition_clubs` ADD CONSTRAINT fk9 FOREIGN KEY (`competition_instance_id`) REFERENCES `competition_instance` (`id`);
 ALTER TABLE `competition_clubs` ADD CONSTRAINT fk10 FOREIGN KEY (`id_club`) REFERENCES `club` (`id`);
