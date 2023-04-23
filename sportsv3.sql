@@ -55,7 +55,7 @@ CREATE TABLE `sponsor` (
 
 CREATE TABLE `competition_instance` (
   `id` INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-  `year` varchar(50),
+  `year` varchar(4),
   `nb_club_participants` int,
   `competition_id` int
 );
