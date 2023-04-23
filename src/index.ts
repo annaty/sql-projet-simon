@@ -80,7 +80,7 @@ function generateInsertLines(targetTable: keyof typeof dbStructure): string[] {
         case TABLES.staff_type:
             for (let i = 0; i < STAFF_TYPES.length; i++) {
                 lines.push(`
-                    ("${STAFF_TYPES[i]}")
+                    ("${STAFF_TYPES[i].type}")
                 `);
             }
             break;
